@@ -177,7 +177,7 @@ onMounted(() => loadReservations());
                             <td class="whitespace-nowrap px-4 py-4 text-sm font-medium">{{ currencyFormatter.format(Number(reservation.amount || 0)) }}</td>
                             <td class="whitespace-nowrap px-4 py-4"><StatusBadge :status="reservation.status" /></td>
                             <td class="whitespace-nowrap px-4 py-4 text-right">
-                                <RouterLink :to="`/reservations/${reservation.id}`" class="rounded-md border border-zinc-300 px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-100">
+                                <RouterLink :to="`/reservations/${reservation.id}`" class="rounded-md border border-zinc-300 mr-2 px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-100">
                                     Details
                                 </RouterLink>
                                 <RouterLink :to="`/reservations/update/${reservation.id}`" class="rounded-md border border-zinc-300 px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-100">
