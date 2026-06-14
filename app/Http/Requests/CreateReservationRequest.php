@@ -29,7 +29,7 @@ class CreateReservationRequest extends FormRequest
             'check_in' => 'required|date_format:Y-m-d H:i:s|after_or_equal:now',
             'check_out' => 'required|date_format:Y-m-d H:i:s|after:check_in',
             'status' => 'in:pending,confirmed',
-            'amount' => 'required|integer',
+            'amount' => 'required|numeric',
             'notes' => 'max:500'
         ];
     }

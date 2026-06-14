@@ -29,7 +29,7 @@ class UpdateReservationRequest extends FormRequest
             'check_in' => 'date_format:Y-m-d H:i:s|after_or_equal:now',
             'check_out' => 'date_format:Y-m-d H:i:s|after:check_in',
             'status' => 'in:pending,confirmed,cancelled',
-            'amount' => 'integer',
+            'amount' => 'numeric',
             'notes' => 'max:500'
         ];
     }

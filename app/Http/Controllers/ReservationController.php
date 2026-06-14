@@ -39,6 +39,33 @@ class ReservationController extends Controller
         }
     }
 
+    public function show(Request $request, int $id): JsonResponse
+    {
+        try {
+            $reservation = $this->reservationService->show($id);
+
+            return response()->json([
+                "success" => true,
+                "message" => "Reservation Data.",
+                "data" => $reservation
+            ], 200);
+
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                "success" => false,
+                "message" => "Reserva not found.",
+                "data" => []
+            ], 404);
+
+        } catch (Exception $e) {
+            return response()->json([
+                "success" => false,
+                "message" => "Error",
+                "error" => $e->getMessage()
+            ], 500);
+        }
+    }
+
     public function create(CreateReservationRequest $request): JsonResponse
     {
         try {

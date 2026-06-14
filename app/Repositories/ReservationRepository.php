@@ -14,7 +14,14 @@ class ReservationRepository
         $this->applyFilters($query, $filters);
 
         return $query->paginate($filters['per_page'] ?? 20);
-    } 
+    }
+
+    public function show(int $id): ?Reservation
+    {
+        return Reservation::with(['events' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+    }
 
     public function create(array $data): Reservation
     {
@@ -44,6 +51,7 @@ class ReservationRepository
         })
         ->when(!empty($filters['check_out']), function($query) use($filters) {
             $query->whereDate('check_out', $filters['check_out']);
-        });
+        })
+        ->orderBy('created_at', 'desc');
     }
 }

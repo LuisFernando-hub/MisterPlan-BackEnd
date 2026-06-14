@@ -21,6 +21,11 @@ class ReservationService
         return $this->reservationRepository->index($filters);
     }
 
+    public function show(int $id): ?Reservation
+    {
+        return $this->reservationRepository->show($id);
+    }
+
     public function create(array $data): Reservation
     {
         $reservation = $this->reservationRepository->create($data);
